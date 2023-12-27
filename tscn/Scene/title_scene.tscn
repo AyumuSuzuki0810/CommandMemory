@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://biynbb14bcie3"]
+
+[ext_resource type="Script" path="res://Script/title_scene.gd" id="1_ltpei"]
+[ext_resource type="Texture2D" uid="uid://07sph45n3c7j" path="res://Textures/bg_music_live_stage.jpg" id="1_s6reb"]
+[ext_resource type="Texture2D" uid="uid://dr3xwen7y608s" path="res://Textures/one_icon.png" id="2_v2ctv"]
+[ext_resource type="Texture2D" uid="uid://078piq2flcoc" path="res://Textures/two_icon.png" id="3_wmt10"]
+
+[node name="TitleScene" type="Node"]
+script = ExtResource("1_ltpei")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s6reb")
+expand_mode = 1
+
+[node name="Title" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="Command" type="RichTextLabel" parent="Control/Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -297.0
+offset_right = 320.0
+offset_bottom = 267.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
+theme_override_font_sizes/normal_font_size = 300
+bbcode_enabled = true
+text = "[color=red]コ[color=blue]マ[color=green]ン[color=Yellow]ド"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Memory" type="Label" parent="Control/Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -297.5
+offset_top = 300.0
+offset_right = 297.5
+offset_bottom = 573.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 75
+theme_override_font_sizes/font_size = 300
+text = "メモリー"
+
+[node name="Menu" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.5
+offset_top = -66.0
+offset_right = 57.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Option" type="Button" parent="Control/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "オプションとか遊び方とか"
+
+[node name="PlayerNumer" type="HBoxContainer" parent="Control/Menu"]
+layout_mode = 2
+
+[node name="OnePlayer" type="Button" parent="Control/Menu/PlayerNumer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "NPCと対戦"
+icon = ExtResource("2_v2ctv")
+
+[node name="TwoPlayer" type="Button" parent="Control/Menu/PlayerNumer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "2人で対戦"
+icon = ExtResource("3_wmt10")
+
+[node name="QuitButton" type="Button" parent="Control/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "ゲームを終了する"
+
+[connection signal="pressed" from="Control/Menu/PlayerNumer/OnePlayer" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="Control/Menu/PlayerNumer/TwoPlayer" to="." method="_on_two_player_pressed"]
+[connection signal="pressed" from="Control/Menu/QuitButton" to="." method="_on_quit_button_pressed"]

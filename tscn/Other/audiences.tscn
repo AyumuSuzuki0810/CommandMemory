@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmnet2sgpixmr"]
+
+[ext_resource type="Script" path="res://Script/Audiences.gd" id="1_ecmjq"]
+[ext_resource type="Texture2D" uid="uid://onedy2y0wm3l" path="res://Textures/audience_penlight.png" id="2_8xhyd"]
+
+[node name="Audiences" type="Node2D"]
+script = ExtResource("1_ecmjq")
+
+[node name="Audience1" type="Sprite2D" parent="."]
+position = Vector2(161, 842)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8xhyd")
+
+[node name="Audience2" type="Sprite2D" parent="."]
+position = Vector2(1570, 862)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8xhyd")
+
+[node name="Audience3" type="Sprite2D" parent="."]
+position = Vector2(884, 919)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8xhyd")

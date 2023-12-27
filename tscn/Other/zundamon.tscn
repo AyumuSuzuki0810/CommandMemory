@@ -1,0 +1,82 @@
+[gd_scene load_steps=16 format=3 uid="uid://mpwgal7olnbe"]
+
+[ext_resource type="Texture2D" uid="uid://c2tjo4pg8y2vr" path="res://Textures/Dance.png" id="1_awg58"]
+[ext_resource type="Script" path="res://Script/zundamon.gd" id="1_uye14"]
+[ext_resource type="AnimationLibrary" uid="uid://cjjfd6ebayfst" path="res://zundamon.res" id="2_yaxtk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ktxi4"]
+animation = &"Left_Failed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_24mq4"]
+animation = &"Up_Failed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hj400"]
+animation = &"Right_Failed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_81i1n"]
+animation = &"Down_Failed"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jetjs"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ktxi4")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_24mq4")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_hj400")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_81i1n")
+blend_point_3/pos = Vector2(0, -1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2l5ah"]
+animation = &"Idol"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cdjel"]
+animation = &"Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1fcov"]
+animation = &"Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eux7q"]
+animation = &"Up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pcgxv"]
+animation = &"Down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0ksak"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_cdjel")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_1fcov")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_eux7q")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_pcgxv")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bq8ti"]
+states/Failed/node = SubResource("AnimationNodeBlendSpace2D_jetjs")
+states/Failed/position = Vector2(622, 138)
+states/Idol/node = SubResource("AnimationNodeAnimation_2l5ah")
+states/Idol/position = Vector2(442, 93)
+states/Success/node = SubResource("AnimationNodeBlendSpace2D_0ksak")
+states/Success/position = Vector2(622, 48)
+
+[node name="Zundamon" type="Node2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_uye14")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_awg58")
+hframes = 5
+vframes = 5
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("2_yaxtk")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_bq8ti")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Failed/blend_position = Vector2(0, 0)
+parameters/Success/blend_position = Vector2(-0.264585, 0.196262)
