@@ -1,0 +1,210 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4t7axgw7yadi"]
+
+[ext_resource type="Script" path="res://Script/option_menu.gd" id="1_01dnd"]
+[ext_resource type="Script" path="res://Script/volume_slider.gd" id="1_3bd47"]
+[ext_resource type="Texture2D" uid="uid://ctkc4j5c6ljyo" path="res://Textures/HowToPlay.png" id="3_mqvq3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0qc1"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcelj"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uocjh"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igeci"]
+bg_color = Color(0, 0, 0, 0.490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="OptionMenu" type="Control" node_paths=PackedStringArray("first_foucs")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_01dnd")
+first_foucs = NodePath("OptionAndHowToPlay/Option/LevelOfDifficulty/Buttons/Easy")
+
+[node name="OptionAndHowToPlay" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -624.5
+offset_top = -428.5
+offset_right = 624.5
+offset_bottom = 428.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Option" type="VBoxContainer" parent="OptionAndHowToPlay"]
+layout_mode = 2
+
+[node name="NowLOD" type="Label" parent="OptionAndHowToPlay/Option"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0qc1")
+text = "現在の難易度：Normal"
+
+[node name="LevelOfDifficulty" type="HBoxContainer" parent="OptionAndHowToPlay/Option"]
+layout_mode = 2
+
+[node name="LOD" type="Label" parent="OptionAndHowToPlay/Option/LevelOfDifficulty"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0qc1")
+text = "難
+易
+度"
+
+[node name="Buttons" type="VBoxContainer" parent="OptionAndHowToPlay/Option/LevelOfDifficulty"]
+layout_mode = 2
+
+[node name="Easy" type="Button" parent="OptionAndHowToPlay/Option/LevelOfDifficulty/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Easy"
+
+[node name="Normal" type="Button" parent="OptionAndHowToPlay/Option/LevelOfDifficulty/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Normal"
+
+[node name="Hard" type="Button" parent="OptionAndHowToPlay/Option/LevelOfDifficulty/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Hard"
+
+[node name="Volumes" type="HBoxContainer" parent="OptionAndHowToPlay/Option"]
+layout_mode = 2
+
+[node name="Volume" type="Label" parent="OptionAndHowToPlay/Option/Volumes"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_xcelj")
+text = "音
+量
+設
+定"
+
+[node name="Sliders" type="VBoxContainer" parent="OptionAndHowToPlay/Option/Volumes"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="OptionAndHowToPlay/Option/Volumes/Sliders"]
+custom_minimum_size = Vector2(191, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_xcelj")
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="M_Slider" type="HSlider" parent="OptionAndHowToPlay/Option/Volumes/Sliders"]
+layout_mode = 2
+max_value = 2.0
+step = 0.1
+script = ExtResource("1_3bd47")
+
+[node name="BGM" type="Label" parent="OptionAndHowToPlay/Option/Volumes/Sliders"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_xcelj")
+text = "BGM"
+horizontal_alignment = 1
+
+[node name="B_Slider" type="HSlider" parent="OptionAndHowToPlay/Option/Volumes/Sliders"]
+layout_mode = 2
+max_value = 2.0
+step = 0.1
+script = ExtResource("1_3bd47")
+bus_type = 1
+
+[node name="SE" type="Label" parent="OptionAndHowToPlay/Option/Volumes/Sliders"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_xcelj")
+text = "SE
+"
+horizontal_alignment = 1
+
+[node name="S_Slider" type="HSlider" parent="OptionAndHowToPlay/Option/Volumes/Sliders"]
+layout_mode = 2
+max_value = 2.0
+step = 0.1
+script = ExtResource("1_3bd47")
+bus_type = 2
+
+[node name="LevelOfDifficulty2" type="HBoxContainer" parent="OptionAndHowToPlay/Option"]
+layout_mode = 2
+
+[node name="Check" type="Label" parent="OptionAndHowToPlay/Option/LevelOfDifficulty2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0qc1")
+text = "そ
+の
+他"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionAndHowToPlay/Option/LevelOfDifficulty2"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="OptionAndHowToPlay/Option/LevelOfDifficulty2/VBoxContainer"]
+custom_minimum_size = Vector2(191, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_igeci")
+text = "メトロノーム音"
+clip_text = true
+
+[node name="SharButton" type="CheckButton" parent="OptionAndHowToPlay/Option/LevelOfDifficulty2/VBoxContainer"]
+custom_minimum_size = Vector2(191, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uocjh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_igeci")
+text = "シェア
+プレイ"
+clip_text = true
+
+[node name="BackButton" type="Button" parent="OptionAndHowToPlay/Option"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "戻る"
+
+[node name="HowToPlay" type="TextureRect" parent="OptionAndHowToPlay"]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+texture = ExtResource("3_mqvq3")
+
+[connection signal="pressed" from="OptionAndHowToPlay/Option/LevelOfDifficulty/Buttons/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="OptionAndHowToPlay/Option/LevelOfDifficulty/Buttons/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="OptionAndHowToPlay/Option/LevelOfDifficulty/Buttons/Hard" to="." method="_on_hard_pressed"]
+[connection signal="value_changed" from="OptionAndHowToPlay/Option/Volumes/Sliders/M_Slider" to="OptionAndHowToPlay/Option/Volumes/Sliders/M_Slider" method="_on_value_changed"]
+[connection signal="value_changed" from="OptionAndHowToPlay/Option/Volumes/Sliders/B_Slider" to="OptionAndHowToPlay/Option/Volumes/Sliders/B_Slider" method="_on_value_changed"]
+[connection signal="value_changed" from="OptionAndHowToPlay/Option/Volumes/Sliders/S_Slider" to="OptionAndHowToPlay/Option/Volumes/Sliders/S_Slider" method="_on_value_changed"]
+[connection signal="toggled" from="OptionAndHowToPlay/Option/LevelOfDifficulty2/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="OptionAndHowToPlay/Option/LevelOfDifficulty2/VBoxContainer/SharButton" to="." method="_on_shar_button_toggled"]
+[connection signal="pressed" from="OptionAndHowToPlay/Option/BackButton" to="." method="_on_back_button_pressed"]

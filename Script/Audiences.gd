@@ -26,3 +26,13 @@ func _process(delta):
 		timer[i] += move_speed[i] * delta
 		audiences[i].position.y = init_pos[i] + sin(timer[i]) * move_range[i]
 	pass
+
+
+func _on_timer_timeout():
+	$AudioStreamPlayer2.play()
+	pass # Replace with function body.
+
+
+func _on_timer_2_timeout():
+	$AudioStreamPlayer3.play()
+	pass # Replace with function body.

@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddxh5kav1s8e1"]
+
+[ext_resource type="Script" path="res://Script/turn_ui.gd" id="1_13fmx"]
+
+[node name="TurnUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_13fmx")
+
+[node name="1P_Blind" type="ColorRect" parent="."]
+layout_mode = 1
+offset_right = 960.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="TurnLabel" type="Label" parent="1P_Blind"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -449.0
+offset_top = -411.0
+offset_right = 449.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Player2
+のターン"
+horizontal_alignment = 1
+
+[node name="2P_Blind" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.490196)
+
+[node name="TurnLabel" type="Label" parent="2P_Blind"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -449.0
+offset_top = -141.0
+offset_right = 449.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Player1
+のターン"
+horizontal_alignment = 1

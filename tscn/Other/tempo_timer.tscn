@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwsjnrkx232no"]
+
+[ext_resource type="Script" path="res://Script/tempo_timer.gd" id="1_b3c6c"]
+[ext_resource type="AudioStream" uid="uid://cxd4hoihcvx1k" path="res://Audio/AS_229493_[生録音]振り子式メトロノーム03.wav" id="2_7bxrp"]
+
+[node name="TempoTimer" type="Timer"]
+wait_time = 0.5
+script = ExtResource("1_b3c6c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7bxrp")
+volume_db = -10.0
+bus = &"BGM"
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://biynbb14bcie3"]
+[gd_scene load_steps=11 format=3 uid="uid://biynbb14bcie3"]
 
 [ext_resource type="Script" path="res://Script/title_scene.gd" id="1_ltpei"]
 [ext_resource type="Texture2D" uid="uid://07sph45n3c7j" path="res://Textures/bg_music_live_stage.jpg" id="1_s6reb"]
 [ext_resource type="Texture2D" uid="uid://dr3xwen7y608s" path="res://Textures/one_icon.png" id="2_v2ctv"]
 [ext_resource type="Texture2D" uid="uid://078piq2flcoc" path="res://Textures/two_icon.png" id="3_wmt10"]
+[ext_resource type="PackedScene" uid="uid://c4t7axgw7yadi" path="res://tscn/Other/option_menu.tscn" id="5_4h4wx"]
+[ext_resource type="AudioStream" uid="uid://cn8ik1xr4toh6" path="res://Audio/AS_1119773_夜のネオン街。テクノ。.wav" id="5_ulvwn"]
+[ext_resource type="AudioStream" uid="uid://68g3jequ5awq" path="res://Audio/AS_130310_決定／クリック／選択音（ピコンッ）.wav" id="7_1c0gq"]
+[ext_resource type="Script" path="res://Script/PushSound.gd" id="7_nn3xm"]
+[ext_resource type="Script" path="res://Script/MoveSound.gd" id="8_vct0r"]
+[ext_resource type="AudioStream" uid="uid://cfkiotlh376l6" path="res://Audio/AS_18126_カーソルボタン（ソフトな電子音）.wav" id="9_xxkpi"]
 
 [node name="TitleScene" type="Node"]
 script = ExtResource("1_ltpei")
@@ -104,6 +110,31 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "ゲームを終了する"
 
+[node name="OptionMenu" parent="Control" node_paths=PackedStringArray("menu", "title", "first_foucs_2") instance=ExtResource("5_4h4wx")]
+visible = false
+layout_mode = 1
+menu = NodePath("../Menu")
+title = NodePath("../Title")
+first_foucs_2 = NodePath("../Menu/Option")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ulvwn")
+volume_db = -20.0
+autoplay = true
+bus = &"BGM"
+
+[node name="PushSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1c0gq")
+bus = &"SE"
+script = ExtResource("7_nn3xm")
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xxkpi")
+volume_db = -10.0
+bus = &"SE"
+script = ExtResource("8_vct0r")
+
+[connection signal="pressed" from="Control/Menu/Option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="Control/Menu/PlayerNumer/OnePlayer" to="." method="_on_one_player_pressed"]
 [connection signal="pressed" from="Control/Menu/PlayerNumer/TwoPlayer" to="." method="_on_two_player_pressed"]
 [connection signal="pressed" from="Control/Menu/QuitButton" to="." method="_on_quit_button_pressed"]

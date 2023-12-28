@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmnet2sgpixmr"]
+[gd_scene load_steps=6 format=3 uid="uid://cmnet2sgpixmr"]
 
 [ext_resource type="Script" path="res://Script/Audiences.gd" id="1_ecmjq"]
 [ext_resource type="Texture2D" uid="uid://onedy2y0wm3l" path="res://Textures/audience_penlight.png" id="2_8xhyd"]
+[ext_resource type="AudioStream" uid="uid://xyxsi0im52cq" path="res://Audio/AS_95572_ワァーキャー！コンサートやライブの歓声1.wav" id="3_v52sy"]
+[ext_resource type="AudioStream" uid="uid://duvjp3ctmit3i" path="res://Audio/AS_201776_ワァーキャー！コンサートやライブの歓声3.wav" id="4_ttxyd"]
+[ext_resource type="AudioStream" uid="uid://71thvm7fkhsv" path="res://Audio/AS_783595_ワァーキャー！コンサートやライブの歓声4.wav" id="5_v01eb"]
 
 [node name="Audiences" type="Node2D"]
 script = ExtResource("1_ecmjq")
@@ -20,3 +23,32 @@ texture = ExtResource("2_8xhyd")
 position = Vector2(884, 919)
 scale = Vector2(2, 2)
 texture = ExtResource("2_8xhyd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v52sy")
+volume_db = -10.0
+autoplay = true
+bus = &"SE"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ttxyd")
+volume_db = -10.0
+bus = &"SE"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_v01eb")
+volume_db = -10.0
+bus = &"SE"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

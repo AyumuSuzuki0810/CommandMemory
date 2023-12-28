@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://mpwgal7olnbe"]
+[gd_scene load_steps=19 format=3 uid="uid://mpwgal7olnbe"]
 
 [ext_resource type="Texture2D" uid="uid://c2tjo4pg8y2vr" path="res://Textures/Dance.png" id="1_awg58"]
 [ext_resource type="Script" path="res://Script/zundamon.gd" id="1_uye14"]
@@ -29,6 +29,9 @@ blend_point_3/pos = Vector2(0, -1)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2l5ah"]
 animation = &"Idol"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lsdsi"]
+animation = &"Move"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cdjel"]
 animation = &"Left"
 
@@ -52,13 +55,24 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_pcgxv")
 blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jtnow"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ymylw"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bq8ti"]
 states/Failed/node = SubResource("AnimationNodeBlendSpace2D_jetjs")
-states/Failed/position = Vector2(622, 138)
+states/Failed/position = Vector2(1005, 158)
 states/Idol/node = SubResource("AnimationNodeAnimation_2l5ah")
-states/Idol/position = Vector2(442, 93)
+states/Idol/position = Vector2(693, 100)
+states/Move/node = SubResource("AnimationNodeAnimation_lsdsi")
+states/Move/position = Vector2(503, 100)
 states/Success/node = SubResource("AnimationNodeBlendSpace2D_0ksak")
-states/Success/position = Vector2(622, 48)
+states/Success/position = Vector2(1005, 40)
+transitions = ["Success", "Idol", SubResource("AnimationNodeStateMachineTransition_jtnow"), "Move", "Idol", SubResource("AnimationNodeStateMachineTransition_ymylw")]
 
 [node name="Zundamon" type="Node2D"]
 scale = Vector2(0.75, 0.75)
@@ -80,3 +94,9 @@ tree_root = SubResource("AnimationNodeStateMachine_bq8ti")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Failed/blend_position = Vector2(0, 0)
 parameters/Success/blend_position = Vector2(-0.264585, 0.196262)
+
+[node name="MoveBackTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="MoveBackTimer" to="." method="_on_move_back_timer_timeout"]
